@@ -17,6 +17,7 @@ int my_shell()
 			printf("Se va la shcaloneta...\n");
 			break;
 		}
+		printf("Comando ingresado: %s\n", comando);
 	}
 	free(comando);
 	return (0);
