@@ -2,12 +2,13 @@
 
 int my_shell()
 {
-	char comando[256];
+	char *comando = NULL;
+	size_t largo = 0;
 
 	while(1)
 	{
 		printf("la_shcaloneta: ");
-		fgets(comando, sizeof(comando), stdin);
+		getline(&comando, &largo, stdin);
 
 		if (strcmp(comando, "exit") == 0)
 		{
@@ -15,5 +16,6 @@ int my_shell()
 			break;
 		}
 	}
+	free(comando);
 	return (0);
 }
