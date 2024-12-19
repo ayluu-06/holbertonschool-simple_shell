@@ -10,6 +10,8 @@ int my_shell()
 		printf("la_shcaloneta: ");
 		getline(&comando, &largo, stdin);
 
+		comando[strcspn(comando, "\n")] = 0;
+
 		if (strcmp(comando, "exit") == 0)
 		{
 			printf("Se va la shcaloneta...\n");
