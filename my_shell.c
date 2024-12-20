@@ -1,23 +1,28 @@
 #include "main.h"
 
-int my_shell()
+int main()
 {
 	char *comando = NULL;
 	size_t largo = 0;
 
+	printf("Bienvenido a la Shcaloneta\n");
+
 	while(1)
 	{
-		printf("la_shcaloneta: ");
-		getline(&comando, &largo, stdin);
+		printf("La Shcaloneta: ");
+		fflush(stdout);
 
-		comando[strcspn(comando, "\n")] = 0;
+		if(getline(&comando, &largo, stdin) == -1)
+		{
+			perror("Error al leer la entrada");
+			break;
+		}
 
 		if (strcmp(comando, "exit") == 0)
 		{
-			printf("Se va la shcaloneta...\n");
+			printf("Se va La Shcaloneta...\n");
 			break;
 		}
-		printf("Comando ingresado: %s\n", comando);
 	}
 	free(comando);
 	return (0);

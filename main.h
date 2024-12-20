@@ -6,6 +6,6 @@
 #include <string.h>
 #include <unistd.h>
 
-int my_shell();
+int main();
 
 #endif
