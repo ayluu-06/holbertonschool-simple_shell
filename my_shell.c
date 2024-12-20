@@ -4,6 +4,8 @@ int main()
 {
 	char *comando = NULL;
 	size_t largo = 0;
+	int args = 0;
+	char *token = strtok(comando, " ");
 
 	printf("Bienvenido a la Shcaloneta\n");
 
@@ -23,6 +25,10 @@ int main()
 			printf("Se va La Shcaloneta...\n");
 			break;
 		}
+	}
+	while (token != NULL)
+	{
+		token = strtok(NULL, " ");
 	}
 	free(comando);
 	return (0);
