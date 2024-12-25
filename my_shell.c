@@ -2,6 +2,12 @@
 
 #define MAX_ARGS 128
 
+/**
+ * main - entry of the shell
+ * 
+ * Return: 0 or error
+ */
+
 int main()
 {
 	char *comando = NULL;
@@ -31,15 +37,17 @@ int main()
 			break;
 		}
 
+		if (comando[0] == '\0')
+			continue;
+		contador = 0;
 		token = strtok(comando, " ");
-		
 		while (token != NULL && contador < MAX_ARGS - 1)
 		{
 			args[contador++] = token;
 			token = strtok(NULL, " ");
 		}
 		args[contador] = NULL;
-
+		printf("Comando: %s\n", args[0]);
 	}
 	free(comando);
 	return (0);
