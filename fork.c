@@ -2,11 +2,11 @@
 #include <unistd.h>
 
 /**
- * main - fork example
+ * for - fork example
  *
  * Return: Always 0.
  */
-int main(void)
+int fork(void)
 {
 	pid_t my_pid;
 	pid_t pid;

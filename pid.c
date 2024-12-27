@@ -2,11 +2,11 @@
 #include <unistd.h>
 
 /**
- * main - PID
+ * getpid - PID
  *
  * Return: Always 0.
  */
-int main(void)
+int getpid(void)
 {
 	pid_t my_pid;
 

@@ -1,11 +1,11 @@
 #include <stdio.h>
 
 /**
- * main - prints the environment
+ * print_env - prints the environment var
  *
  * Return: Always 0.
  */
-int main(int ac, char **av, char **env)
+int print_env(char **env)
 {
     unsigned int i;
 

@@ -4,11 +4,11 @@
 #include <unistd.h>
 
 /**
- * main - stat example
+ * stat - stat example
  *
  * Return: Always 0.
  */
-int main(int ac, char **av)
+int stat(int ac, char **av)
 {
 	unsigned int i;
 	struct stat st;

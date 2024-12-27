@@ -3,12 +3,12 @@
 #define MAX_ARGS 128
 
 /**
- * main - entry of the shell
+ * main_shell - entry of the shell
  * 
  * Return: 0 or error
  */
 
-int main()
+int main_shell()
 {
 	char *comando = NULL;
 	size_t largo = 0;

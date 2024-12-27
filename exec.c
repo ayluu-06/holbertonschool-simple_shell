@@ -2,11 +2,11 @@
 #include <unistd.h>
 
 /**
- * main - execve example
+ * run_execve - execve example
  *
  * Return: Always 0.
  */
-int main(void)
+int run_execve(void)
 {
 	char *argv[] = {"/bin/ls", "-l", "/usr/", NULL};
 
