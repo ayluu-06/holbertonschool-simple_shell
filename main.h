@@ -6,7 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 
-//int print_env(char **env);
+int print_env(char **env);
 int run_execve(void);
 int fork(void);
 int main_shell();
