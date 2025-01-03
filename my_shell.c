@@ -8,7 +8,7 @@
  * Return: 0 or error
  */
 
-int main_shell()
+int main()
 {
 	char *comando = NULL;
 	size_t largo = 0;
