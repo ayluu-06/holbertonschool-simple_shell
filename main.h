@@ -9,10 +9,10 @@
 int print_env(char **env);
 int run_execve(void);
 int fork(void);
-int main_shell();
-int nosequees();
+int main(void);
 int getpid(void);
 int stat(int ac, char **av);
 int wait(void);
+char **dividir_comando(char *line);
 
 #endif
