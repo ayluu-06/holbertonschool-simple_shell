@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * ejecutar_comando - executes a command in a child process
+ * @args: array of argument string
+ * @env: enviroment variables for the execve function
+ */
+
 void ejecutar_comando(char **args, char **env)
 {
 	pid_t pid;

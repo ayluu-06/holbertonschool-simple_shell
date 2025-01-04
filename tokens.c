@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * dividir_comando - dividir comando
- * @line: linea de comando
- * Return: token definido
+ * dividir_comando - divides a command line into tokens
+ * @line: command line input
+ * Return: array of tokens (strings)
  */
 
 char **dividir_comando(char *line)
@@ -22,8 +22,19 @@ char **dividir_comando(char *line)
 	while (comando != NULL)
 	{
 		token[pos] = strdup(comando);
-		comando = strtok(NULL, " \n");
+		if (!token[pos])
+		{
+			perror("Error al duplicar comando");
+			while (pos > 0)
+			{
+				free(token[--pos]);
+			}
+			free(token);
+			return (NULL);
+		}
 		pos++;
+
+		comando = strtok(NULL, " \n");
 	}
 	token[pos] = NULL;
 	return (token);
