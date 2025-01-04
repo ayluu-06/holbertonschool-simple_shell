@@ -12,5 +12,6 @@
 int print_env(char **env);
 char **dividir_comando(char *line);
 void ejecutar_comando(char **args, char **env);
+char *buscar_comando(char *comando);
 
 #endif
