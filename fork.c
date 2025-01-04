@@ -1,25 +1,28 @@
-#include <stdio.h>
-#include <unistd.h>
+#include "main.h"
 
-/**
- * fork - fork example
- *
- * Return: Always 0.
- */
-int fork(void)
+void ejecutar_comando(char **args, char **env)
 {
-	pid_t my_pid;
 	pid_t pid;
+	int estado;
 
-	printf("Before fork\n");
 	pid = fork();
 	if (pid == -1)
 	{
-		perror("Error in fork:");
-		return (1);
+		perror("Error al crear proceso");
+		return;
 	}
-	printf("After fork\n");
-	my_pid = getpid();
-	printf("My pid is %u\n", my_pid);
-	return (0);
+	if (pid == 0)
+	{
+		if (execve(args[0], args, env) == -1)
+		{
+			perror("Error al ejecutar el comando");
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		do
+			waitpid(pid, &estado, WUNTRACED);
+		while (!WIFEXITED(estado) && !WIFSIGNALED(estado));
+	}
 }

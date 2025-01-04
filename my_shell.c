@@ -1,17 +1,18 @@
 #include "main.h"
 
 /**
- * main_shell - entry of the shell
+ * main - entry of the shell
  * 
  * Return: 0 or error
  */
 
-int main()
+int main(int argc, char **envp)
 {
 	char *line = NULL;
 	size_t largo = 0;
 	char **args;
-	int contador = 0;
+
+	(void)argc;
 
 	printf("Bienvenido a la Shcaloneta\n");
 
@@ -25,14 +26,8 @@ int main()
 			perror("Error al leer la entrada");
 			break;
 		}
-		
-		args = dividir_comando(line);
 
-		if (strcmp(line, "exit") == 0)
-		{
-			printf("Se va La Shcaloneta...\n");
-			break;
-		}
+		args = dividir_comando(line);
 
 		if (!args || !args[0])
 		{
@@ -40,9 +35,20 @@ int main()
 			continue;
 		}
 
-		args[contador] = NULL;
+		if (strcmp(args[0], "exit") == 0)
+		{
+			printf("Se va La Shcaloneta...\n");
+			free(args);
+			break;
+		}
+		else if (strcmp(args[0], "env") == 0)
+			print_env(envp);
+		else
+			ejecutar_comando(args, envp);
+		
 		free(args);
 	}
+
 	free(line);
 	return (0);
 }

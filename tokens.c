@@ -13,12 +13,15 @@ char **dividir_comando(char *line)
 	size_t pos = 0;
 
 	if (!token)
+	{
+		perror("Error al asignar memoria");
 		return (NULL);
+	}
 
-	comando = strtok(line, " ");
+	comando = strtok(line, "  \n");
 	while (comando != NULL)
 	{
-		token[pos] = comando;
+		token[pos] = strdup(comando);
 		comando = strtok(NULL, " \n");
 		pos++;
 	}
