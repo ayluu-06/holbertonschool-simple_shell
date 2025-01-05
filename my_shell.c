@@ -57,7 +57,7 @@ int prcs_command(char **args, char *line, char **envp)
 	}
 	else
 	{
-		ejecutar_comando(args, envp);
+		ejecutar_comando(args);
 	}
 
 	return (0);

@@ -3,10 +3,9 @@
 /**
  * ejecutar_comando - executes a command in a child process
  * @args: array of argument string
- * @env: enviroment variables for the execve function
  */
 
-void ejecutar_comando(char **args, char **env)
+void ejecutar_comando(char **args)
 {
 	pid_t pid;
 	int estado;
@@ -16,32 +15,23 @@ void ejecutar_comando(char **args, char **env)
 
 	if (!comando_completo)
 	{
-		fprintf(stderr, "La Shcaloneta: Comando no encontrado: %s\n", args[0]);
+		fprintf(stderr, "Comando no encontrado: %s\n", args[0]);
 		return;
 	}
 
 	pid = fork();
-	if (pid == -1)
-	{
-		perror("Error al crear proceso");
-		free(comando_completo);
-		return;
-	}
 	if (pid == 0)
 	{
-		if (execve(comando_completo, args, env) == -1)
+		if (execve(comando_completo, args, NULL) == -1)
 		{
-			perror("Error al ejecutar el comando");
-			free(comando_completo);
+			perror("Error al ejecutar comando");
 			exit(EXIT_FAILURE);
 		}
 	}
+	else if (pid < 0)
+		perror("Error al crear proceso");
 	else
-	{
-		do
-			waitpid(pid, &estado, WUNTRACED);
-		while (!WIFEXITED(estado) && !WIFSIGNALED(estado));
-	}
+		waitpid(pid, &estado, 0);
 
 	free(comando_completo);
 }

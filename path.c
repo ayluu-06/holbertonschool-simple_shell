@@ -7,7 +7,7 @@
  */
 char **dividir_path(char *path)
 {
-	return (dividir_comando(path));
+	return (dividir_comando(strdup(path)));
 }
 
 /**
