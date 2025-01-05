@@ -14,7 +14,7 @@ void ejecutar_comando(char **args, char **env)
 
 	comando_completo = buscar_comando(args[0]);
 
-	if(!comando_completo)
+	if (!comando_completo)
 	{
 		fprintf(stderr, "La Shcaloneta: Comando no encontrado: %s\n", args[0]);
 		return;
