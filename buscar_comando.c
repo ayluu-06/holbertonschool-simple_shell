@@ -23,7 +23,7 @@ char *buscar_comando(char *comando)
 	size_t len_comando, len_direccion;
 
 	if (!path || !comando)
-		return(NULL);
+		return (NULL);
 
 	copia_ruta = strdup(path);
 
