@@ -19,31 +19,43 @@ char **dividir_path(char *path)
 char *buscar_comando(char *comando)
 {
 	char *path = getenv("PATH");
-	char **paths;
-	size_t i = 0;
+	char *copia_ruta, *ruta_completa, *paths;
+	size_t len_comando, len_direccion;
 
-	paths = dividir_path(path);
+	if (!path || !comando)
+		return(NULL);
 
-	while (paths[i])
+	copia_ruta = strdup(path);
+
+	if (!copia_ruta)
+		return (NULL);
+
+	len_comando = strlen(comando);
+
+	paths = strtok(copia_ruta, ":");
+
+	while (paths)
 	{
-		char *ruta_completa = construir_ruta_completa(paths[i], comando);
-
+		len_direccion = strlen(paths);
+		ruta_completa = malloc(len_direccion + len_comando + 2);
 		if (!ruta_completa)
 		{
-			liberar_memoria_paths(paths, i);
+			free(copia_ruta);
 			return (NULL);
 		}
 
+		sprintf(ruta_completa, "%s/%s", paths, comando);
+
 		if (verificar_comando(ruta_completa))
 		{
-			liberar_memoria_paths(paths, i);
+			free(copia_ruta);
 			return (ruta_completa);
 		}
 
 		free(ruta_completa);
-		i++;
+		paths = strtok(NULL, ":");
 	}
 
-	liberar_memoria_paths(paths, i);
+	free(copia_ruta);
 	return (NULL);
 }
