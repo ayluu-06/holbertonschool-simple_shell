@@ -3,6 +3,7 @@
 /**
  * ejecutar_comando - executes a command in a child process
  * @args: array of argument string
+ * @envp: array of environment variables
  */
 
 void ejecutar_comando(char **args, char **envp)
@@ -36,9 +37,10 @@ void ejecutar_comando(char **args, char **envp)
 		if (WIFEXITED(estado))
 		{
 			int exit_status = WEXITSTATUS(estado);
+
 			if (exit_status != 0)
-				fprintf(stderr, "Comando %s terminó con código de salida %d\n", args[0], exit_status);
-		
+				fprintf(stderr, "Comando %s terminó con código de salida %d\n",
+						args[0], exit_status);
 		}
 		else
 			fprintf(stderr, "El comando %s no terminó correctamente\n", args[0]);
