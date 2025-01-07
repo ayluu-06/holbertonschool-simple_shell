@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * print_env - prueba de comentarios
- * @env: prueba comentarios
- * Return: 0
+ * print_env - prints the current environment variables
+ * @env: an array of environment variables
+ * Return: 0 on success, 1 if the env array is NULL
  */
 
 int print_env(char **env)

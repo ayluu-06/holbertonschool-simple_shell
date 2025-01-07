@@ -18,7 +18,7 @@ char **dividir_comando(char *line)
 		return (NULL);
 	}
 
-	comando = strtok(line, "  \n");
+	comando = strtok(line, " \t\n");
 	while (comando != NULL)
 	{
 		token[pos] = strdup(comando);
@@ -34,7 +34,7 @@ char **dividir_comando(char *line)
 		}
 		pos++;
 
-		comando = strtok(NULL, " \n");
+		comando = strtok(NULL, " \t\n");
 	}
 	token[pos] = NULL;
 	return (token);

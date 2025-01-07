@@ -19,7 +19,7 @@ int verificar_comando(char *ruta_completa);
 void liberar_memoria_paths(char **paths, size_t i);
 char *buscar_comando(char *comando);
 int print_env(char **env);
-void ejecutar_comando(char **args);
+void ejecutar_comando(char **args, char **envp);
 char **dividir_comando(char *line);
 
 #endif

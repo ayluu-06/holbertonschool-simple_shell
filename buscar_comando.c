@@ -7,7 +7,17 @@
  */
 char **dividir_path(char *path)
 {
-	return (dividir_comando(strdup(path)));
+	char *path_copy;
+
+	path_copy = malloc(strlen(path) + 1);
+	if (!path_copy)
+	{
+		perror("Error al asignar memoria");
+		return (NULL);
+	}
+	strcpy(path_copy, path);
+
+	return (dividir_comando(path_copy));
 }
 
 /**
