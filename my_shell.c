@@ -96,9 +96,6 @@ int main(int argc, char **envp)
 			free(args);
 			continue;
 		}
-
-		for (i = 0; args[i] != NULL; i++)
-			printf("La Shcaloneta: %s\n", args[i]);
 		if (prcs_command(args, line, envp) == -1)
 			break;
 
