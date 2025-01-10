@@ -66,8 +66,8 @@ int prcs_command(char **args, char *line, char **envp)
 /**
  * main - entry point for the shell program
  * @argc: argument count
- * @envp: enviroment variables passed to the program
- * Return: 0 or error
+ * @envp: array of environment variables passed to the program
+ * Return: 0 on success, or -1 on error
  */
 
 int main(int argc, char **envp)
@@ -75,6 +75,7 @@ int main(int argc, char **envp)
 	char *line = NULL;
 	size_t largo = 0;
 	char **args;
+	int i;
 
 	(void)argc;
 
@@ -87,6 +88,7 @@ int main(int argc, char **envp)
 
 		if (read_entry(&line, &largo) == -1)
 			break;
+
 		args = dividir_comando(line);
 
 		if (!args || !args[0])
@@ -94,10 +96,19 @@ int main(int argc, char **envp)
 			free(args);
 			continue;
 		}
+
+		for (i = 0; args[i] != NULL; i++)
+			printf("La Shcaloneta: %s\n", args[i]);
 		if (prcs_command(args, line, envp) == -1)
 			break;
+
+		for (i = 0; args[i] != NULL; i++)
+		{
+			free(args[i]);
+		}
 		free(args);
 	}
+
 	free(line);
 	return (0);
 }
