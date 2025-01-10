@@ -8,7 +8,6 @@
 
 void exit_shell(char **args, char *line)
 {
-	printf("Se va la Shcaloneta...\n");
 	free(args);
 	free(line);
 	exit(0);
@@ -27,7 +26,6 @@ int read_entry(char **line, size_t *largo)
 	{
 		if (feof(stdin))
 		{
-			printf("\nFin de archivo (Ctrl+D) detectado. Saliendo...\n");
 			return (-1);
 		}
 		perror("Error al leer la entrada");
