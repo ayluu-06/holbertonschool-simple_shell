@@ -46,14 +46,34 @@ char *check_and_return(char *paths, char *comando)
 }
 
 /**
- * buscar_comando - searches for command in the directories listed
- * @comando: the command to search for
- * Return: complete path to the command if found, NULL otherwise
+ * get_env_var - Gets the value of an environment variable
+ * @name: The name of the environment variable
+ * Return: The value of the environment variable if found, NULL otherwise
+ */
+
+char *get_env_var(const char *name)
+{
+	int i = 0;
+	size_t len = strlen(name);
+
+	while (environ[i])
+	{
+		if (strncmp(environ[i], name, len) == 0 && environ[i][len] == '=')
+			return (environ[i] + len + 1);
+		i++;
+	}
+	return (NULL);
+}
+
+/**
+ * buscar_comando - Searches for a command in the directories listed in PATH
+ * @comando: The command to search for
+ * Return: The complete path to the command if found, NULL otherwise
  */
 
 char *buscar_comando(char *comando)
 {
-	char *path = getenv("PATH");
+	char *path = get_env_var("PATH");
 	char *copia_ruta, *paths;
 	char *ruta_completa;
 

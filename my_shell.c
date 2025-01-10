@@ -22,14 +22,17 @@ void exit_shell(char **args, char *line)
 
 int read_entry(char **line, size_t *largo)
 {
-	if (getline(line, largo, stdin) == -1)
+	ssize_t nread;
+
+	nread = getline(line, largo, stdin);
+	if (nread == -1)
 	{
-		if (feof(stdin))
+		if (errno == EINVAL || errno == ENOMEM)
 		{
-			return (-1);
+			perror("Error al leer la entrada");
+			return (1);
 		}
-		perror("Error al leer la entrada");
-		return (1);
+		return (-1);
 	}
 	return (0);
 }

@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <errno.h>
+#include "env_utils.h"
 
 void exit_shell(char **args, char *line);
 int read_entry(char **line, size_t *largo);
