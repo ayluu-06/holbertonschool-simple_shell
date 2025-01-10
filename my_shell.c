@@ -79,13 +79,9 @@ int main(int argc, char **envp)
 
 	(void)argc;
 
-	printf("Bienvenido a la Shcaloneta\n");
-
 	while (1)
 	{
-		printf("La Shcaloneta: ");
 		fflush(stdout);
-
 		if (read_entry(&line, &largo) == -1)
 			break;
 
