@@ -8,8 +8,20 @@
 
 void exit_shell(char **args, char *line)
 {
-	free(args);
-	free(line);
+	size_t i;
+
+	if (args)
+	{
+		for (i = 0; args[i]; i++)
+		{
+			free(args[i]);
+		}
+		free(args);
+	}
+	if (line)
+	{
+		free(line);
+	}
 	exit(0);
 }
 

@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * dividir_comando - divides a command line into tokens
- * @line: command line input
- * Return: array of tokens (strings)
+ * dividir_comando - splits a command line into tokens
+ * @line: the command line to split
+ * Return: an array of tokens if successful, NULL otherwise
  */
-
 char **dividir_comando(char *line)
 {
 	char **token = malloc(sizeof(char *) * 128);
@@ -36,7 +35,7 @@ char **dividir_comando(char *line)
 
 		comando = strtok(NULL, " \t\n");
 	}
-	token[pos] = NULL;
+	token[pos] = (NULL);
 	return (token);
 }
 
