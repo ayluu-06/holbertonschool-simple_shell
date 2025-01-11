@@ -53,4 +53,4 @@ This project uses only the following system calls and standard library functions
 
 ## Authors
 - [Aylin Pintos](https://github.com/ayluu-06)
-- [Federico Angeriz] (https://github.com/FedeAngeriz)
+- [Federico Angeriz](https://github.com/FedeAngeriz)
